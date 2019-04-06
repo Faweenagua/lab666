@@ -1,0 +1,236 @@
+//
+// Created by Clerk on 06/04/2019.
+//
+
+#ifndef ICPLAB6_ASHESIASALIVINGLAB_H
+#define ICPLAB6_ASHESIASALIVINGLAB_H
+#include<bits/stdc++.h>
+#include <iostream>
+
+using namespace std;
+
+class AshesiAsALivingLab {
+public:
+    double temperatureValueInCelsius;
+    double relativeHumidityValue;
+    double waterPHLevel;
+    const int lectureHallSize = 54;
+    int numberOfPeopleInLectureHall = 0;
+    const int bigBenSize = 34;
+    int numberOfPeopleAtBigBen = 0;
+    const int librarySize = 70;
+    int numberOfPeopleInLibrary = 0;
+    const int washRoomSize = 12;
+    int numberOfPeopleInWashRoom = 0;
+    const int akornoSize = 45;
+    int numberOfPeopleAtAkorno = 0;
+    const int parkingSize = 30;
+    int numberOfCarsParked = 0;
+
+
+
+
+
+    AshesiAsALivingLab()= default;
+
+
+    int spaceAvailableInLectureHall(){
+        return lectureHallSize-numberOfPeopleInLectureHall;
+    }
+
+    int spaceAvailableAtBigBen(){
+        return bigBenSize-numberOfPeopleAtBigBen;
+    }
+
+    int spaceAvailableInLibrary(){
+        return librarySize-numberOfPeopleInLibrary;
+    }
+    int spaceAvailableInWashroom(){
+        return washRoomSize-numberOfPeopleInWashRoom;
+    }
+
+    int spaceAvailableAtAkorno(){
+        return akornoSize-numberOfPeopleAtAkorno;
+    }
+
+    int spaceAvailableAtCarPark(){
+        return parkingSize-numberOfCarsParked;
+    }
+
+    void addpersonToLectureHall(){
+        if (numberOfPeopleInLectureHall < lectureHallSize){
+            numberOfPeopleInLectureHall +=1;
+        } else{
+            cout<<"Can't add at the moment, Lecture Hall is full";
+        }
+
+    }
+
+    void removePersonFromLectureHall(){
+        if (numberOfPeopleInLectureHall > 0){
+            numberOfPeopleInLectureHall -=1;
+        } else{
+            cout<<"Can't remove at the moment, Lecture Hall is empty";
+        }
+
+    }
+
+    void addPersonToBigBenQueue(){
+
+        if (numberOfPeopleAtBigBen < bigBenSize){
+            numberOfPeopleAtBigBen +=1;
+        } else{
+            cout<<"Can't add at the moment, Big Ben is full";
+        }
+    }
+
+    void removePersonFromoBigBenQueue(){
+
+        if (numberOfPeopleAtBigBen > 0){
+            numberOfPeopleAtBigBen -=1;
+        } else{
+            cout<<"Can't remove at the moment, Big Ben is empty";
+        }
+    }
+
+
+    void addPersonToAkornoQueue(){
+
+        if (numberOfPeopleAtAkorno < akornoSize){
+            numberOfPeopleAtAkorno +=1;
+        } else{
+            cout<<"Can't add at the moment, Akorno is full";
+        }
+    }
+
+    void removePersonFromAkornoQueue(){
+
+        if (numberOfPeopleAtAkorno > 0){
+            numberOfPeopleAtAkorno -=1;
+        } else{
+            cout<<"Can't remove at the moment, Akorno is empty";
+        }
+    }
+
+    void addPersonToLibrary(){
+
+        if (numberOfPeopleInLibrary< librarySize){
+            numberOfPeopleInLibrary +=1;
+        } else{
+            cout<<"Can't add at the moment, Library is full";
+        }
+    }
+
+    void removePersonFromLibrary(){
+
+        if (numberOfPeopleInLibrary > 0){
+            numberOfPeopleInLibrary -=1;
+        } else{
+            cout<<"Can't remove at the moment, Library is empty";
+        }
+    }
+
+
+    void addPersonToWashRoom(){
+        if (numberOfPeopleInWashRoom < washRoomSize){
+            numberOfPeopleInWashRoom +=1;
+        } else{
+            cout<<"Can't add at the moment, Washroom is full";
+        }
+
+    }
+
+    void reomvePersonFromWashRoom(){
+        if (numberOfPeopleInWashRoom > 0){
+            numberOfPeopleInWashRoom -=1;
+        } else{
+            cout<<"Can't remove at the moment, Washroom is empty";
+        }
+
+    }
+
+    void addCarToCarPark(){
+        if (numberOfCarsParked < parkingSize){
+            numberOfCarsParked +=1;
+        } else{
+            cout<<"Can't add at the moment, Parking space is full";
+        }
+
+    }
+
+    void removeCarFromCarPark(){
+        if (numberOfCarsParked > 0){
+            numberOfCarsParked -=1;
+        } else{
+            cout<<"Can't remove at the moment, Parking space is empty";
+        }
+
+    }
+
+
+    void setTemperature(double temp, string unit){
+        transform(unit.begin(), unit.end(), unit.begin(), ::toupper);
+        if (unit == "F"){
+            temperatureValueInCelsius = (temp - 32)*(static_cast<float >(5)/9);
+        }else if (unit == "C"){
+            temperatureValueInCelsius = temp;
+        } else{
+            cout<<"Invalid input try again";
+        }
+    }
+
+
+    string waterPHLevelScale(){
+        string output = "Optimal";
+
+        if(waterPHLevel >= 0 && waterPHLevel < 7){
+            output = "Acidic";
+        }else if (waterPHLevel == 7){
+            output = "Optimal";
+        }else if (waterPHLevel >7 && waterPHLevel<= 14){
+            output = "Alkaline";
+        }
+
+        return output;
+    }
+
+    string relativeHumidityScale(){
+        string output = "Less Humid";
+        if(relativeHumidityValue >0 && relativeHumidityValue <= 25){
+            output = "No Humidity";
+        }else if (relativeHumidityValue >25 && relativeHumidityValue <= 50){
+            output = "Less Humid";
+        }else if (relativeHumidityValue >50 && relativeHumidityValue <= 75){
+            output = "Humid";
+        }else if (relativeHumidityValue >75 && relativeHumidityValue <= 100){
+            output = "Very Humid";
+        } else{
+            cout<<"Please input a value between 0 and 100";
+        }
+
+        return output;
+    }
+
+    string temperatureScale(){
+        string output = "Optimal";
+
+        if(temperatureValueInCelsius <= 0){
+            output = "Very Cold";
+        }else if (temperatureValueInCelsius >0 && temperatureValueInCelsius <= 16){
+            output = "Cold";
+        }else if (temperatureValueInCelsius >16 && temperatureValueInCelsius <= 26){
+            output = "Moderately Cold";
+        }else if (temperatureValueInCelsius >26 && temperatureValueInCelsius <= 32){
+            output = "Optimal";
+        }else if (temperatureValueInCelsius < 32){
+            output = "Too Hot";
+        }
+
+        return output;
+    };
+};
+
+
+
+
+#endif //ICPLAB6_ASHESIASALIVINGLAB_H
