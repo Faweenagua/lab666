@@ -1,33 +1,43 @@
 //
-// Created by Clerk on 06/04/2019.
+// Created by Jones and Francis.
 //
 
 #include <iostream>
 
 using namespace std;
 
+/*This method takes the principal amount, interest rate, and the time and calculates
+the simple interest on an investment*/
 double simpleInterest(double principal, double interestRate, double timeInYears){
     return (principal*interestRate*timeInYears)/100;
 }
 
 int main() {
+/*initialized variables for storing the principal, interest rate,
+time in years and the currency notations such $ for dollars*/
+
     double principal;
     double interestRate;
     double timeInYears;
     string currency;
-
+       
+       //takes symbol of currency
     cout<<"Input the symbol of your currency: \n";
     cin>>currency;
 
+    //takes principal amount to be invested
     cout<<"Input Principal Amount in \n"<<currency<<" ";
     cin>>principal;
-
+    
+    //takes interest rate
     cout<<"Input Interest Rate in %: \n";
     cin>>interestRate;
-
+    
+    //takes maturity date in years
     cout<<"Input time in Years: \n";
     cin>>timeInYears;
-
+    
+    //outputs the simple interest
     cout<<"The Simple Interest is "<< currency <<simpleInterest(principal,interestRate,timeInYears) ;
 }
 
