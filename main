@@ -1,0 +1,164 @@
+//
+// Created by Clerk on 06/04/2019.
+//
+#include <iostream>
+
+using namespace std;
+
+#include "AshesiAsALivingLab.h"  // defines
+
+int main()
+{
+    AshesiAsALivingLab a;
+    int mainMenuChoice;
+    int scaleChoice;
+    double temperature;
+    string temperatureUnit;
+    double relativeHumidity;
+    double waterPH;
+    int spaceCheck;
+    int roomAddChoice;
+    int roomRemoveChoice;
+    int roomCheckChoice;
+
+    cout<<"\n<<<<>>>> WELCOME TO ASHESI AS A LIVING LAB <<<<>>>>\n";
+
+    while (true) {
+        cout << "Select an option below\n";
+        cout << " 1. Check scale\n 2. Room Occupancy\n 0. To exit\n";
+        cin >> mainMenuChoice;
+
+        if (mainMenuChoice == 0){
+            break;
+        }
+        switch (mainMenuChoice) {
+            case 1:
+                cout << "Select Scale\n 1. Temperature Scale\n 2. Humidity Scale\n 3. Water PH Level Scale\n";
+                cin >> scaleChoice;
+
+                switch (scaleChoice) {
+                    case 1:
+                        cout << "Input Temperature Value: \n";
+                        cin >> temperature;
+                        cout << "Input Temperature Unit [F/C]: \n";
+                        cin >> temperatureUnit;
+                        a.setTemperature(temperature, temperatureUnit);
+                        cout << "The temperature is " << a.temperatureScale() << "\n";
+                        break;
+                    case 2:
+                        cout << "Input Relative Humidity Value: \n";
+                        cin >> relativeHumidity;
+                        a.relativeHumidityValue = relativeHumidity;
+                        cout << "The Humidity is " << a.relativeHumidityScale() << "\n";
+                        break;
+                    case 3:
+                        cout << "Input Water PH Value: \n";
+                        cin >> waterPH;
+                        a.waterPHLevel = waterPH;
+                        cout << "The Water is " << a.waterPHLevelScale() << "\n";
+                        break;
+                }
+
+                break;
+
+            case 2:
+
+                cout << "Select an action\n 1. Add person to room\n 2. Remove person from room\n 3. Check for space\n";
+                cin >> spaceCheck;
+
+                switch (spaceCheck) {
+                    case 1 :
+                        cout
+                                << "Select room to add person\n 1. Lecture Hall\n 2. BigBen\n 3. Akorno\n 4. Library\n 5. Car Park\n 6. Washroom\n";
+                        cin >> roomAddChoice;
+                        switch (roomAddChoice) {
+                            case 1:
+                                a.addpersonToLectureHall();
+                                cout << "Person added\n";
+                                break;
+                            case 2:
+                                a.addPersonToBigBenQueue();
+                                cout << "Person added\n";
+                                break;
+                            case 3:
+                                a.addPersonToAkornoQueue();
+                                cout << "Person added\n";
+                                break;
+                            case 4:
+                                a.addPersonToLibrary();
+                                cout << "Person added\n";
+                                break;
+                            case 5:
+                                a.addCarToCarPark();
+                                cout << "Person added\n";
+                                break;
+                            case 6:
+                                a.addPersonToWashRoom();
+                                cout << "Person added\n";
+                                break;
+                        }
+                        break;
+                    case 2:
+                        cout
+                                << "Select room to remove person\n 1. Lecture Hall\n 2. BigBen\n 3. Akorno\n 4. Library\n 5. Car Park\n 6. Washroom\n";
+                        cin >> roomRemoveChoice;
+                        switch (roomRemoveChoice) {
+                            case 1:
+                                a.removePersonFromLectureHall();
+                                cout << "Person removed\n";
+                                break;
+                            case 2:
+                                a.removePersonFromoBigBenQueue();
+                                cout << "Person removed\n";
+                                break;
+                            case 3:
+                                a.removePersonFromAkornoQueue();
+                                cout << "Person removed\n";
+                                break;
+                            case 4:
+                                a.removePersonFromLibrary();
+                                cout << "Person removed\n";
+                                break;
+                            case 5:
+                                a.removeCarFromCarPark();
+                                cout << "Person removed\n";
+                                break;
+                            case 6:
+                                a.removePersonFromWashRoom();
+                                cout << "Person removed\n";
+                                break;
+                        }
+                        break;
+                    case 3:
+                        cout
+                                << "Check for space in \n 1. Lecture Hall\n 2. BigBen\n 3. Akorno\n 4. Library\n 5. Car Park\n 6. Washroom\n";
+                        cin >> roomCheckChoice;
+                        switch (roomCheckChoice) {
+                            case 1:
+                                cout << "The space available in Lecture Hall is " << a.spaceAvailableInLectureHall()<<"\n\n";
+                                break;
+                            case 2:
+                                cout << "The space available at BigBen is " << a.spaceAvailableAtBigBen()<<"\n\n";
+                                break;
+                            case 3:
+                                cout << "The space available at Akorno is " << a.spaceAvailableAtAkorno()<<"\n\n";
+                                break;
+                            case 4:
+                                cout << "The space available in the Library is " << a.spaceAvailableInLibrary()<<"\n\n";
+                                break;
+                            case 5:
+                                cout << "The space available at the Car park is " << a.spaceAvailableAtCarPark()<<"\n";
+                                break;
+                            case 6:
+                                cout << "The space available in the Washroom is " << a.spaceAvailableInWashroom()<<"\n\n";
+                                break;
+                        }
+                        break;
+                }
+
+                break;
+        }
+    }
+
+    return 0;
+}
